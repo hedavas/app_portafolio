@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Project;
+use DB;
 use Illuminate\Http\Request;
 
 class projectController extends Controller
@@ -13,10 +14,10 @@ class projectController extends Controller
      */
     public function index()
     {
-        
+      //  $this-> withoutExceptionHandling();
         
     return  view('projects.index', [ 
-        'projects' => Project::latest()->paginate()
+        'projects' => Project::latest()->get()
 
     ]);
     
@@ -41,10 +42,36 @@ class projectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( )
+
+
+     public function create2()
     {
         //
-        return request();
+         Project::create([
+
+            'title1' => request('title'),
+            'url' => request('url'),
+            'description' => request('description')
+
+            ]);
+
+    }
+
+
+
+
+
+    public function store()
+    {
+        //
+        Project::create([
+
+            'title' => request('title'),
+            'url' => request('url'),
+            'description' => request('description'),
+
+            ]);
+
     }
 
     /**
@@ -53,15 +80,21 @@ class projectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($project)
     {
         //
           
+        $projects = Project::findOrFail($project);
+
+     //   return view('projects.show', compact('projects'));
+
           return view('projects.show', [
-            'project' => $Project
+            'projects' => $projects
 
             ]);
     }
+
+
 
 
     /**

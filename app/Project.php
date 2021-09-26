@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     //
-    protected $tablle = 'projects';
+    protected $table = 'projects';
+
+
+ //   public function FunctionName()
+ //   {
+ //   	return 'title';
+ //   }
+
 }

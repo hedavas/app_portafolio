@@ -1,10 +1,10 @@
 @extends('layout')
-@section('title', 'Portfolio')
+@section('title', 'Crear Proyecto')
 @section('contenido')
     <h1>Crear Nuevo Proyecto</h1>
 
-  	<form method="POST" action="{{ route('projects.store')}}">
-	
+  	<form method="post" action="{{ route('projects.store')}}">
+      {{ csrf_field() }}
 
   		<label>
   			Titulo del proyecto <br>
@@ -16,11 +16,10 @@
   		</label>
   		<label><br>
   			Descripcion del proyecto <br>
-  			<textarea name "description"></textarea
+  			<textarea name "description"></textarea>
   		</label><br>
   		<button>Guardar</button>
   	</form>
 
 
-@endsection
-
+@stop

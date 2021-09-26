@@ -3,6 +3,8 @@
 @section('contenido')
     <h1>Portfolio</h1>
 
+
+
     <ul>
 
 	    	@forelse ($projects as $project)
@@ -13,7 +15,7 @@
 			@endforelse
 
 
-			{{$projects->links()}}
+			
     </ul>
 
 
